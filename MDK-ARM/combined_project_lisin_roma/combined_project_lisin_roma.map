@@ -46,7 +46,7 @@ Section Cross References
     main.o(i.main) refers to emfat.o(i.ascam_emfat_scan) for ascam_emfat_scan
     main.o(i.main) refers to emfat.o(i.emfat_init) for emfat_init
     main.o(i.main) refers to emfat.o(i.EMFAT_USB_DEVICE_Init) for EMFAT_USB_DEVICE_Init
-    main.o(i.main) refers to camera.o(i.recive_cmd) for recive_cmd
+    main.o(i.main) refers to camera.o(i.receive_cmd) for receive_cmd
     main.o(i.main) refers to main.o(.data) for magic_size_of_entry
     main.o(i.main) refers to ringfs.o(.bss) for ring_structure
     main.o(i.main) refers to main.o(.conststring) for .conststring
@@ -272,21 +272,21 @@ Section Cross References
     camera.o(i.parse) refers to filesys.o(i.closefile) for closefile
     camera.o(i.parse) refers to filesys.o(i.initfile) for initfile
     camera.o(i.parse) refers to camera.o(.data) for Lat
-    camera.o(i.recive_cmd) refers to stm32f1xx_hal_uart.o(i.HAL_UART_Receive_IT) for HAL_UART_Receive_IT
-    camera.o(i.recive_cmd) refers to camera.o(i.parse) for parse
-    camera.o(i.recive_cmd) refers to stm32f1xx_hal.o(i.HAL_GetTick) for HAL_GetTick
-    camera.o(i.recive_cmd) refers to camera.o(i.shoot1) for shoot1
-    camera.o(i.recive_cmd) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_ReadPin) for HAL_GPIO_ReadPin
-    camera.o(i.recive_cmd) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
-    camera.o(i.recive_cmd) refers to filesys.o(i.savedata) for savedata
-    camera.o(i.recive_cmd) refers to camera.o(i.feedback_shoot) for feedback_shoot
-    camera.o(i.recive_cmd) refers to camera.o(i.shoot2) for shoot2
-    camera.o(i.recive_cmd) refers to fflt_clz.o(x$fpl$ffltu) for __aeabi_ui2f
-    camera.o(i.recive_cmd) refers to faddsub_clz.o(x$fpl$fsub) for __aeabi_fsub
-    camera.o(i.recive_cmd) refers to frleqf.o(x$fpl$frleqf) for __aeabi_cfrcmple
-    camera.o(i.recive_cmd) refers to camera.o(.bss) for RXBuffer
-    camera.o(i.recive_cmd) refers to usart.o(.bss) for huart1
-    camera.o(i.recive_cmd) refers to camera.o(.data) for start_shoot
+    camera.o(i.receive_cmd) refers to stm32f1xx_hal_uart.o(i.HAL_UART_Receive_IT) for HAL_UART_Receive_IT
+    camera.o(i.receive_cmd) refers to camera.o(i.parse) for parse
+    camera.o(i.receive_cmd) refers to stm32f1xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    camera.o(i.receive_cmd) refers to camera.o(i.shoot1) for shoot1
+    camera.o(i.receive_cmd) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_ReadPin) for HAL_GPIO_ReadPin
+    camera.o(i.receive_cmd) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
+    camera.o(i.receive_cmd) refers to filesys.o(i.savedata) for savedata
+    camera.o(i.receive_cmd) refers to camera.o(i.feedback_shoot) for feedback_shoot
+    camera.o(i.receive_cmd) refers to camera.o(i.shoot2) for shoot2
+    camera.o(i.receive_cmd) refers to fflt_clz.o(x$fpl$ffltu) for __aeabi_ui2f
+    camera.o(i.receive_cmd) refers to faddsub_clz.o(x$fpl$fsub) for __aeabi_fsub
+    camera.o(i.receive_cmd) refers to frleqf.o(x$fpl$frleqf) for __aeabi_cfrcmple
+    camera.o(i.receive_cmd) refers to camera.o(.bss) for RXBuffer
+    camera.o(i.receive_cmd) refers to usart.o(.bss) for huart1
+    camera.o(i.receive_cmd) refers to camera.o(.data) for start_shoot
     camera.o(i.shoot1) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
     camera.o(i.shoot1) refers to camera.o(.data) for shoot1_time
     camera.o(i.shoot2) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
@@ -3333,7 +3333,7 @@ Image Symbol Table
     i.read_fat_sector                        0x0800cde8   Section        0  emfat.o(i.read_fat_sector)
     i.read_mbr_sector                        0x0800ce8c   Section        0  emfat.o(i.read_mbr_sector)
     i.readme_read_proc                       0x0800cef4   Section        0  emfat.o(i.readme_read_proc)
-    i.recive_cmd                             0x0800cfc4   Section        0  camera.o(i.recive_cmd)
+    i.receive_cmd                             0x0800cfc4   Section        0  camera.o(i.receive_cmd)
     i.remove_chain                           0x0800d438   Section        0  ff.o(i.remove_chain)
     remove_chain                             0x0800d439   Thumb Code   270  ff.o(i.remove_chain)
     i.ringfs_append                          0x0800d548   Section        0  ringfs.o(i.ringfs_append)
@@ -4040,7 +4040,7 @@ Image Symbol Table
     read_fat_sector                          0x0800cde9   Thumb Code   160  emfat.o(i.read_fat_sector)
     read_mbr_sector                          0x0800ce8d   Thumb Code   102  emfat.o(i.read_mbr_sector)
     readme_read_proc                         0x0800cef5   Thumb Code   186  emfat.o(i.readme_read_proc)
-    recive_cmd                               0x0800cfc5   Thumb Code  1140  camera.o(i.recive_cmd)
+    receive_cmd                               0x0800cfc5   Thumb Code  1140  camera.o(i.receive_cmd)
     ringfs_append                            0x0800d549   Thumb Code   142  ringfs.o(i.ringfs_append)
     ringfs_init                              0x0800d5e9   Thumb Code    32  ringfs.o(i.ringfs_init)
     savedata                                 0x0800d60d   Thumb Code   304  filesys.o(i.savedata)
@@ -4731,7 +4731,7 @@ Memory Map of the image
     0x0800ce8c   0x0800ce8c   0x00000066   Code   RO          626    i.read_mbr_sector   emfat.o
     0x0800cef2   0x0800cef2   0x00000002   PAD
     0x0800cef4   0x0800cef4   0x000000d0   Code   RO          627    i.readme_read_proc  emfat.o
-    0x0800cfc4   0x0800cfc4   0x00000474   Code   RO          995    i.recive_cmd        camera.o
+    0x0800cfc4   0x0800cfc4   0x00000474   Code   RO          995    i.receive_cmd        camera.o
     0x0800d438   0x0800d438   0x0000010e   Code   RO         4764    i.remove_chain      ff.o
     0x0800d546   0x0800d546   0x00000002   PAD
     0x0800d548   0x0800d548   0x000000a0   Code   RO          787    i.ringfs_append     ringfs.o

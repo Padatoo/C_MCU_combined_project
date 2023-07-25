@@ -3,7 +3,7 @@
 #include "stm32f1xx_hal.h"
 #include <stdbool.h>
 
-void recive_cmd(void);
+void receive_cmd(void);
 void parse (float *pData, uint8_t pSize);
 void shoot1 (void);
 void shoot2 (void);

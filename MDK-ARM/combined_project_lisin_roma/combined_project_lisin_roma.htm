@@ -1011,14 +1011,14 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[22e]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
-<BR><BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<BR><BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 </UL>
 
 <P><STRONG><a name="[12e]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin))
 <BR><BR>[Called By]<UL><LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;at45dbxx_wait_busy
 <LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;at45dbxx_read_page
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_MspInit
-<LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 <LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;at45dbxx_program_byte
 <LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;at45dbxx_erase_page
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
@@ -1036,7 +1036,7 @@ Global Symbols
 <LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;at45dbxx_wait_busy
 <LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WriteMulti
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_ReadMulti
-<LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
@@ -1490,7 +1490,7 @@ Global Symbols
 <P><STRONG><a name="[22d]"></a>HAL_UART_Receive_IT</STRONG> (Thumb, 112 bytes, Stack size 8 bytes, stm32f1xx_hal_uart.o(i.HAL_UART_Receive_IT))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = HAL_UART_Receive_IT
 </UL>
-<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 </UL>
 
 <P><STRONG><a name="[175]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_hal_uart.o(i.HAL_UART_RxCpltCallback))
@@ -2894,7 +2894,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 </UL>
 
 <P><STRONG><a name="[217]"></a>feedback_state</STRONG> (Thumb, 48 bytes, Stack size 40 bytes, camera.o(i.feedback_state))
@@ -3007,7 +3007,7 @@ Global Symbols
 <LI>Call Chain = main &rArr; ascam_emfat_scan &rArr; at45dbxx_read_page &rArr; HAL_SPI_Receive &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[221]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ringfs_init
-<LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 <LI><a href="#[21f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initfilesystem
 <LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;generate_fname
 <LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;emfat_init
@@ -3041,7 +3041,7 @@ Global Symbols
 <LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 </UL>
 
 <P><STRONG><a name="[1c7]"></a>pow</STRONG> (Thumb, 2512 bytes, Stack size 128 bytes, pow.o(i.pow))
@@ -3119,9 +3119,9 @@ Global Symbols
 <LI> storagemode.o(.data)
 <LI> filesys.o(.data)
 </UL>
-<P><STRONG><a name="[222]"></a>recive_cmd</STRONG> (Thumb, 1140 bytes, Stack size 64 bytes, camera.o(i.recive_cmd))
+<P><STRONG><a name="[222]"></a>receive_cmd</STRONG> (Thumb, 1140 bytes, Stack size 64 bytes, camera.o(i.receive_cmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 720 + Unknown Stack Size
-<LI>Call Chain = recive_cmd &rArr; parse &rArr; initfile &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+<LI>Call Chain = receive_cmd &rArr; parse &rArr; initfile &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -3170,7 +3170,7 @@ Global Symbols
 <LI><a href="#[236]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 </UL>
-<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 </UL>
 
 <P><STRONG><a name="[227]"></a>shoot1</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, camera.o(i.shoot1))
@@ -3178,7 +3178,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 <LI><a href="#[223]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;parse
 </UL>
 
@@ -3187,7 +3187,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 <LI><a href="#[223]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;parse
 </UL>
 
@@ -3509,7 +3509,7 @@ Global Symbols
 <P><STRONG><a name="[29c]"></a>_fflt</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$fflt), UNUSED)
 
 <P><STRONG><a name="[230]"></a>__aeabi_ui2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu))
-<BR><BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<BR><BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 </UL>
 
 <P><STRONG><a name="[29d]"></a>_ffltu</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu), UNUSED)
@@ -3560,7 +3560,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[231]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, frleqf.o(x$fpl$frleqf))
-<BR><BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<BR><BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 </UL>
 
 <P><STRONG><a name="[25a]"></a>_frcmple</STRONG> (Thumb, 98 bytes, Stack size 0 bytes, frleqf.o(x$fpl$frleqf), UNUSED)
@@ -3570,7 +3570,7 @@ Global Symbols
 <P><STRONG><a name="[1c6]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recive_cmd
+<BR>[Called By]<UL><LI><a href="#[222]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_cmd
 <LI><a href="#[223]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;parse
 <LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calcDistance
 </UL>

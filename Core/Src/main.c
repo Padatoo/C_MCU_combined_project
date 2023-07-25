@@ -137,7 +137,7 @@ int main(void)
   while (1)
   {
 		
-	recive_cmd();	
+	receive_cmd();	
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

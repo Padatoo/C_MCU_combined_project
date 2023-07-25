@@ -72,7 +72,7 @@ volatile uint32_t shoot2_time=0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-void recive_cmd(void){ 
+void receive_cmd(void){ 
   // обрабатываем новые данные и/или команды от автопилота
   if (!HAL_UART_Receive_IT(&huart1,RXBuffer,32)){
       
