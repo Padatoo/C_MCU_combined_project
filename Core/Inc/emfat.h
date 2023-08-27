@@ -55,6 +55,8 @@ typedef struct emfat_entry emfat_entry_t;
 
 typedef struct entry_name names_struct;
 
+extern uint8_t global_session_number;
+
 struct entry_name
 {
 	char name[12];
@@ -114,34 +116,13 @@ void readme_read_proc(uint8_t *dest, int size, uint32_t offset, size_t userdata)
 
 void EMFAT_USB_DEVICE_Init(void);
 
-static names_struct entry_name_array[256];
+//static names_struct entry_name_array[100];
+extern names_struct entry_name_array[];
 static emfat_entry_t default_entry = {NULL, false, 1, 0, 512, 512, 0, readme_read_proc, NULL, NULL};
 
-void ascam_emfat_scan(struct ringfs *fs, emfat_entry_t array[], names_struct entry_name_array[]);
+void ascam_emfat_scan(struct ringfs *ring_structure, emfat_entry_t array[], names_struct entry_name_array[]);
 
-static emfat_entry_t entries[80] =
-{
-	// name          dir    lvl offset  size    max_size    user  read               write  session
-	{ "",            true,  0,  0,      0,          0,       0,    NULL,              NULL, NULL }, // root
-  { "06_jun00.txt",  false, 1,  0,    512*8000,       512*8000,    0,    readme_read_proc,  NULL, NULL },
-  /*{ "page_1.txt", false, 1, 0, 512*4100,     512*4100,    4000,  readme_read_proc, NULL   },
-  { "page_2.txt	", false, 1, 0, README_SIZE*1000,     README_SIZE*1000,    2000,  readme_read_proc, NULL   },
-	{ "page_3.txt	", false, 1, 0, 2000*512,     2000*512,    3000,  readme_read_proc, NULL   },
-	{ "page_4.txt	", false, 1, 0, 512*2000,     512*2000,    5000,  readme_read_proc, NULL   },
-  { "page_5.txt	", false, 1, 0, 512*1100,     512*1100,    7000,  readme_read_proc, NULL   },
-	{ "page_6.txt	", false, 1, 0, 512*1000,     512*1000,    8000,  readme_read_proc, NULL   },
-	//{ "page_7.txt	", false, 1, 0, 512,     512,    8000,  readme_read_proc, NULL   },
-	{NULL},
-{ "4100un.txt",  false, 1,  0,      README_SIZE,     README_SIZE,    4101,    readme_read_proc,  NULL },
-{ "4101un.txt",  false, 1,  0,      README_SIZE,     README_SIZE,    4100,    readme_read_proc,  NULL },
-{ "4099un.txt",  false, 1,  0,      README_SIZE,     README_SIZE,    4099,    readme_read_proc,  NULL },
-{ "17_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },
-{ "18_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },
-{ "19_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },
-{ "20_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },
-{ "21_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },
-{ "22_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },*/// drivers/readme.txt
-};
+extern emfat_entry_t entries[];
 
 
 #ifdef __cplusplus
