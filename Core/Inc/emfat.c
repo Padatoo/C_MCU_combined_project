@@ -132,6 +132,9 @@ extern "C" {
 uint16_t global_head_increment = 0; // Thats the increment of head/tail location of the ringbuffer,
 //the place from which reading/writing will commence.
 uint8_t last_session_number = 0;
+uint8_t global_session_number = 0;
+//uint8_t *session_pointer;
+
 
 
 const char *autorun_file =
@@ -173,33 +176,120 @@ void readme_read_proc(uint8_t *dest, int size, uint32_t offset, size_t userdata)
 	size_t page = userdata + offset;
 	const char * answer_temp = at45dbxx_read_page(0, page);
 	char buffer[512];
+	//char buffer_debug[512];
 	char empty_char[] = "";
 	strcpy(buffer, empty_char);
 	strcat(buffer, answer_temp);
 
 	char buffer_output[512] = "";
-
-	for (int slot = 0; slot < 5; slot++){
+	//char buffer_debug[512] = "";
+	
+	
+	
+	for (int slot = 0; slot < 5; slot++){  ///  TEST 
 		if (slot == 4) {
-		char buffer_temp[98];
+		char buffer_temp[104];
 		strncpy(buffer_temp, buffer+6+(slot*102), 96);
 		strncat(buffer_output, buffer_temp, 96);
-		strncat(buffer_output, "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\n", 8);
+		strncat(buffer_output, "\xFF\xFF\xFF\xFF\xFF\xFF\xFF\n", 8);
 		} else {
-		char buffer_temp[98];
+		char buffer_temp[102];
 		strncpy(buffer_temp, buffer+6+(slot*102), 96);
 		strncat(buffer_output, buffer_temp, 96);
-		strncat(buffer_output, "\u00A0\u00A0\u00A0\u00A0\u00A0\n", 6);
+		strncat(buffer_output, "\xFF\xFF\xFF\xFF\xFF\n", 6);
 		}
 	}
+	
+	            // TEST
+	/*	uint16_t new_valid_increment;
+		uint8_t left_temp_increment;
+		uint8_t right_temp_increment;		
+		
+		uint16_t last_valid_increment = 0;
+		uint16_t last_increment_diff = 0;
+		uint16_t new_increment_diff;
+							
+		left_temp_increment = answer_temp[1]; // get page increment number from bytes [1] and [2] and combine them into uint16_t
+		right_temp_increment = answer_temp[2];
+		new_valid_increment = ((((uint16_t)left_temp_increment) << 8) | (uint16_t)right_temp_increment);
+		
+		new_increment_diff = ((new_valid_increment - last_valid_increment) % 65536); // compare difference between increments to find the
+		
+		uint8_t first_half = (uint8_t)(new_increment_diff >> 8);
+		uint8_t second_half = (uint8_t)(new_increment_diff);
+		
+		char decimal_buffer[5];
+		sprintf(decimal_buffer, "%05u", new_increment_diff);
+		
+		char second_decimal_buffer[5];
+		sprintf(second_decimal_buffer, "%05u", new_valid_increment);
+		
+		last_increment_diff = new_increment_diff;
+		last_valid_increment = new_valid_increment;
+		
+	for (int slot2 = 0; slot2 < 5; slot2++){   // DEBUG MODE
+		if (slot2 == 4){
+			char buffer_temp[104];
+			strncpy(buffer_temp, buffer+(slot2*102), 102);
+			strncat(buffer_debug, buffer_temp, 102);
+			strncat(buffer_debug, "\xFF\n", 2);
+		} else {
+			char buffer_temp[102];
+			strncpy(buffer_temp, buffer+(slot2*102), 102);  */
+			/////////////////////////////////////////////
+			/*buffer_temp[13] = decimal_buffer[0];
+			buffer_temp[14] = decimal_buffer[1];
+			buffer_temp[15] = decimal_buffer[2];
+			buffer_temp[16] = decimal_buffer[3];
+			buffer_temp[17] = decimal_buffer[4];
+			buffer_temp[18] = ' ';
+			buffer_temp[19] = second_decimal_buffer[0];
+			buffer_temp[20] = second_decimal_buffer[1];
+			buffer_temp[21] = second_decimal_buffer[2];
+			buffer_temp[22] = second_decimal_buffer[3];
+			buffer_temp[23] = second_decimal_buffer[4];
+			buffer_temp[24] = ' ';*/
+			///////////////////////////////////////////////////
+			//buffer_temp[101] = '\n';
+			//strncat(buffer_debug, buffer_temp, 102);
+			//strncat(buffer_debug, "\n", 1);
+		//}
+	//}
+	
+	
 	//////////////////////////////////////////////////
 	memcpy(dest, buffer_output, sizeof(buffer_output));
-	//memcpy(dest, buffer, sizeof(buffer));
+		//memcpy(dest, buffer, sizeof(buffer));
+			//memcpy(dest, buffer_debug, sizeof(buffer_debug));  //DEBUG BUFFER
 /////////////////////////////////////////////////////
 	
 }
 
+names_struct entry_name_array[100];
 
+emfat_entry_t entries[100] =
+{
+	// name          dir    lvl offset  size    max_size    user  read               write  session
+	{ "",            true,  0,  0,      0,          0,       0,    NULL,              NULL, NULL }, // root
+  { "neNaiden.txt",  false, 1,  0,    8192*512,       8192*512,    0,    readme_read_proc,  NULL, NULL },
+  /*{ "ERROR_2.txt", false, 1, 0, 512*2048,     512*2048,    4096,  readme_read_proc, NULL   },
+  { "ERROR_3.txt	", false, 1, 0, 512*1024,     512*1024,    6144,  readme_read_proc, NULL   },
+	{ "ERROR_4.txt	", false, 1, 0, 1024*512,     1024*512,    7168,  readme_read_proc, NULL   },
+	{ "page_4.txt	", false, 1, 0, 512*2000,     512*2000,    5000,  readme_read_proc, NULL   },
+  { "page_5.txt	", false, 1, 0, 512*1100,     512*1100,    7000,  readme_read_proc, NULL   },
+	{ "page_6.txt	", false, 1, 0, 512*1000,     512*1000,    8000,  readme_read_proc, NULL   },
+	//{ "page_7.txt	", false, 1, 0, 512,     512,    8000,  readme_read_proc, NULL   },
+	{NULL},
+{ "4100un.txt",  false, 1,  0,      README_SIZE,     README_SIZE,    4101,    readme_read_proc,  NULL },
+{ "4101un.txt",  false, 1,  0,      README_SIZE,     README_SIZE,    4100,    readme_read_proc,  NULL },
+{ "4099un.txt",  false, 1,  0,      README_SIZE,     README_SIZE,    4099,    readme_read_proc,  NULL },
+{ "17_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },
+{ "18_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },
+{ "19_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },
+{ "20_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },
+{ "21_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },
+{ "22_jun.txt",  false, 2,  0,      1024*1024,     1024*1024,    0,    readme_read_proc,  NULL },*/// drivers/readme.txt
+};
 
 typedef struct
 {
@@ -405,61 +495,81 @@ void lba_to_chs(uint32_t lba, uint8_t *cl, uint8_t *ch, uint8_t *dh)
 	*dh = head;
 }
 */
-struct ringfs fs;
+//struct ringfs ring_structure;
 
 void ascam_emfat_scan(struct ringfs *ring_structure, emfat_entry_t entries[], names_struct entry_name_array[])
 {
+	HAL_NVIC_DisableIRQ(OTG_FS_IRQn);
+	HAL_NVIC_DisableIRQ(USART1_IRQn); //HAL_NVIC_EnableIRQ(USART1_IRQn);
 	int page;
 	uint8_t old_session_byte = 0;
 	uint8_t new_session_byte;
 	uint8_t session_counter = 0;
 	
-	uint16_t last_valid_increment = 0;
-	uint16_t last_increment_diff = 0;
+	uint16_t last_valid_increment;
+	//uint16_t last_increment_diff = 0;
 	uint16_t new_increment_diff;
+	uint16_t max_increment_diff = 0;
 	
 	ring_structure->write.sector = 0;
 	ring_structure->write.slot = 0;
 	
+	bool first_page_flag = true;
+	
+	uint32_t empty_slot_counter = 0;
+	
 	uint32_t size_counter = 0;
+	uint32_t test_size_counter = 0;
+	//session_pointer = &last_session_number;
+	
 	for(page = 0; page < 8192; page++){
 		//// prepare buffer for work
 		char read_page_buffer[512];
-		char empty_char[] = "";
+		//char empty_char[] = "";
 		char valid_slot_byte = 0xF1;
 		
 		uint16_t new_valid_increment;
 		uint8_t left_temp_increment;
 		uint8_t right_temp_increment;
+		//uint8_t temp_session_counter;
 		//// get page
 		const char *answer_from_at45 = at45dbxx_read_page(0, page);
 		//// fill buffer
-		strcpy(read_page_buffer, empty_char);
-	  strcat(read_page_buffer, answer_from_at45);
-		if (read_page_buffer[0] == 0x00) {    // ignore BAD pages
+		strcpy(read_page_buffer, answer_from_at45);
+	  //strcat(read_page_buffer, answer_from_at45);   // TEST
+		if ((uint8_t)read_page_buffer[0] == 0x00) {    // ignore BAD pages
 			continue;
 		} else {
 			left_temp_increment = read_page_buffer[1]; // get page increment number from bytes [1] and [2] and combine them into uint16_t
 			right_temp_increment = read_page_buffer[2];
 			new_valid_increment = ((((uint16_t)left_temp_increment) << 8) | (uint16_t)right_temp_increment);
+			if ((first_page_flag == true) && (uint8_t)read_page_buffer[0] == 0xF1) {
+				first_page_flag = false;
+				last_valid_increment = new_valid_increment;
+				global_head_increment = last_valid_increment + 4;
+				global_session_number = read_page_buffer[3];
+			}
 			new_increment_diff = ((new_valid_increment - last_valid_increment) % 65536); // compare difference between increments to find the
 			 // head/tail. biggest difference is the head/tail (end of old session and start of new session)
-			if (new_increment_diff > last_increment_diff) {
+			if (new_increment_diff > max_increment_diff) {
 				ring_structure->write.sector = page;
-				global_head_increment = last_valid_increment;
-				last_session_number = read_page_buffer[4]; // last session number used by the main write function to change the session number (check fotoboard)
+				global_head_increment = last_valid_increment + 4;
+				global_session_number = last_session_number; // last session number used by the main write function to change the session number (check fotoboard)
+				max_increment_diff = new_increment_diff;
 			}
-			last_increment_diff = new_increment_diff;
-			last_valid_increment = new_valid_increment;	
-			
+			last_valid_increment = new_valid_increment;
+			if ((uint8_t)read_page_buffer[0] == 0xF1){
+				last_session_number = read_page_buffer[3];
+			}
 		}
-		//// check each slot on page (valid is -> {0xF1,0xFF,0xFF,0xFF});  one entry is 100 bytes, starting from 0. have space to increase it by 2 bytes (or more, if working with 528 byte page)
+		//// check each slot on page (valid is -> {0xF1,0xFF,0xFF,0xFF});  one entry is 102 bytes, starting from 0.
 		//size_t entry_size = magic_number_of_bytes + magic_size_of_entry;
 		//size_counter += 1;
 		
 		for (int entry_slot = 0; entry_slot < 5; entry_slot++)
 		{
 		  if ((read_page_buffer[entry_slot * 102]) != valid_slot_byte) {   //MAGIC NUMBER OF 102 is total entry size
+				empty_slot_counter += 1;
 				continue;
 			}
 			//else if   // INSERT  CRC HERE
@@ -468,8 +578,9 @@ void ascam_emfat_scan(struct ringfs *ring_structure, emfat_entry_t entries[], na
 				if (new_session_byte != old_session_byte) {
 					session_counter += 1;
 					size_counter = 1;
+					empty_slot_counter = 0;
 					old_session_byte = new_session_byte;
-				  if ((session_counter == 0) || (session_counter == 255))	{
+				  if ((session_counter == 0) || (session_counter == 100))	{
 						session_counter = 1;
 					}
 					entries[session_counter] = default_entry;
@@ -484,26 +595,28 @@ void ascam_emfat_scan(struct ringfs *ring_structure, emfat_entry_t entries[], na
 		      ///////////
 
 				} else {
-					size_counter = size_counter + 2; // Incrementing counter by 2 instead of 1, because of Keil compiler 5.07 bug. (later the size counter is divided by 2).
+					test_size_counter += 1;
+					size_counter = size_counter + 1; // compiler Bug here.
 					
 				}
-					entries[session_counter].curr_size = (((size_counter/2 + ( 4))/5) * 512 );  //  <<<<<-----  512 is the minimum size of file and is the size of USB data packet.
-					entries[session_counter].max_size = (((size_counter/2 + ( 4))/5) * 512);   // <<<<< ------  (5 - 1)/5  is the rounding up crutch. 5 is the number of entries on page.
-				  //entries[session_counter].curr_size = (512 * size_counter);//the minimum size of file and is the size of USB data packet.
-					//entries[session_counter].max_size = (512 * size_counter);
+					entries[session_counter].curr_size = (((size_counter)/5) * 2) + ((size_counter) * 102) + (empty_slot_counter * 512);  //  <<<<<-----  512 is a fixed  size of USB data packet. 
+				//	End of data transfer will be signalled by packet size less then 512.
+					entries[session_counter].max_size = entries[session_counter].curr_size;   //  5 is the number of entries on page.
 			}
 		}
 		
 	}
 	// END->START+END HERE.
-	if (entries[session_counter].session == entries[1].session) {
+	if ((session_counter > 2) && (entries[session_counter].session == entries[1].session)) {
 		entries[1].curr_size += entries[session_counter].curr_size;
 		entries[1].max_size += entries[session_counter].max_size;
 		entries[1].user_data = entries[session_counter].user_data;
-		entries[session_counter].name = NULL;
+		entries[session_counter].name = 0x00;
   }
 //fs->write.sector = 2000;
-//fs->write.slot = 0;	
+//fs->write.slot = 0;
+HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
+HAL_NVIC_EnableIRQ(USART1_IRQn);	
 }
 
 
